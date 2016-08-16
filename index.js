@@ -5,7 +5,7 @@ const app = express();
 require('dotenv').config();
 
 app.get('/', (req, res) => {
-  res.send('Hello world! this is messenge');
+  res.sendFile(__dirname + '/index.html');
 });
 
 app.listen(process.env.PORT, () => {
