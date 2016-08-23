@@ -18,5 +18,22 @@
     <form action="">
       <input id="m" autocomplete="off" /><button>Send</button>
     </form>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/jquery.js"></script>
+    <script>
+      var user = prompt("what's your name?")
+      var socket = io();
+      socket.emit('login', user);
+
+      $('form').submit(function(){
+        socket.emit('chat message', user + ": " + $('#m').val());
+        $('#m').val('');
+        return false;
+      });
+
+      socket.on('chat message', function(msg){
+        $('#messages').append($('<li>').text(msg));
+      });
+    </script>
   </body>
 </html>
