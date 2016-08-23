@@ -11,7 +11,7 @@ io.on("connection", (socket) => {
 
   socket.on("login", (username) => {
     users[socket.id] = username
-    io.emit("chat message", username + " has connected.")
+    io.emit("server message", username + " has connected.")
 
   })
 
@@ -22,7 +22,7 @@ io.on("connection", (socket) => {
 
   socket.on("disconnect", () => {
     console.log(socket.id)
-    io.emit('chat message', users[socket.id] + " has disconnected.");
+    io.emit('server message', users[socket.id] + " has disconnected.");
   })
 });
 
